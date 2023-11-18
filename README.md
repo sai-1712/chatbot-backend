@@ -8,4 +8,4 @@
 
 - Replace your secret key in index.js under OpenAIApi configuration.
 - Install dependency : npm i
-- Run : npm run dev
+- Run : npm start
