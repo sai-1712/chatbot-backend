@@ -35,12 +35,12 @@ io.on("connection", (socket) => {
     chatHistory.push({ role: "user", content: data.message });
 
     try {
-
-      const chats = await axios.get("http://localhost:5000/chat/getChat")
+      
+      const chats = await axios.get("https://chatbot-backend-16w3.onrender.com/chat/getChat")
       let chatHistory = chats.data.allChats.map(({role, content}) => ({role, content}))
       
       chatHistory = [...chatHistory, { role: "user", content: data.message }]
-      const response = await axios.post("http://localhost:5000/getResponse", {
+      const response = await axios.post("https://chatbot-backend-16w3.onrender.com/getResponse", {
         messages: chatHistory, 
       })
 
@@ -50,7 +50,7 @@ io.on("connection", (socket) => {
         {role: "user", content: data.message},
         response.data.message
       ]
-      const updatedChats = await axios.post("http://localhost:5000/chat/addChat", {
+      const updatedChats = await axios.post("https://chatbot-backend-16w3.onrender.com/chat/addChat", {
         newchats
       })
       
